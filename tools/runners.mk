@@ -64,6 +64,15 @@ $(INSTALL_DIR)/bin/slang-driver:
 	$(MAKE) -C $(RDIR)/slang/build
 	install -D $(RDIR)/slang/build/bin/slang $@
 
+# maple
+maple: $(INSTALL_DIR)/bin/maple
+
+$(INSTALL_DIR)/bin/maple:
+	mkdir -p $(RDIR)/maple/build
+	cd $(RDIR)/maple/build && cmake .. -DSLANG_INCLUDE_TESTS=OFF -DCMAKE_BUILD_TYPE=Release
+	$(MAKE) -C $(RDIR)/maple/build
+	install -D $(RDIR)/maple/build/src/maple $@
+
 # Surelog
 surelog: $(INSTALL_DIR)/bin/surelog
 
