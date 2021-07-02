@@ -85,3 +85,6 @@
 [submodule "third_party/tests/axi-vip"]
 	path = third_party/tests/axi-vip
 	url = https://github.com/SymbiFlow/axi-vip.git
+[submodule "third_party/tools/maple"]
+	path = third_party/tools/maple
+	url = git@github.com:ICBench/maple.git
