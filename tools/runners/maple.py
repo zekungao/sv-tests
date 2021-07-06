@@ -14,11 +14,13 @@ from BaseRunner import BaseRunner
 
 class maple(BaseRunner):
     def __init__(self):
-        super().__init__("maple", maple)
+        super().__init__("maple", "maple")
 
-        self.url = "git@github.com:ICBench/maple.git"
+        self.url = "https://github.com/ICBench/maple"
 
     def prepare_run_cb(self, tmp_dir, params):
+        self.cmd = [self.executable]
+
 
     def get_version_cmd(self):
         return [self.executable, "-version"]

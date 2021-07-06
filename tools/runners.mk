@@ -141,6 +141,6 @@ $(INSTALL_DIR)/bin/verible-verilog-kythe-extractor: verible
 $(INSTALL_DIR)/bin/verilog_syntax: verible
 
 # setup the dependencies
-RUNNERS_TARGETS := odin yosys icarus verilator slang zachjs-sv2v tree-sitter-verilog sv-parser moore verible surelog antmicro-yosys yosys-uhdm verilator-uhdm
+RUNNERS_TARGETS := odin yosys icarus verilator slang maple zachjs-sv2v tree-sitter-verilog sv-parser moore verible surelog antmicro-yosys yosys-uhdm verilator-uhdm
 .PHONY: $(RUNNERS_TARGETS)
 runners: $(RUNNERS_TARGETS)
