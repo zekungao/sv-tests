@@ -20,12 +20,3 @@ class maple(BaseRunner):
 
     def prepare_run_cb(self, tmp_dir, params):
         self.cmd = [self.executable]
-
-
-    def get_version_cmd(self):
-        return [self.executable, "-version"]
-
-    def get_version(self):
-        version = super().get_version()
-
-        return " ".join([self.name, version.split()[2]])
