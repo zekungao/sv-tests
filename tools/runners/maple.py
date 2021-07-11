@@ -10,6 +10,7 @@
 # SPDX-License-Identifier: ISC
 
 from BaseRunner import BaseRunner
+import os
 
 
 class maple(BaseRunner):
@@ -19,4 +20,22 @@ class maple(BaseRunner):
         self.url = "https://github.com/ICBench/maple"
 
     def prepare_run_cb(self, tmp_dir, params):
-        self.cmd = [self.executable]
+        run = os.path.join(tmp_dir, "run.tcl")
+        flist = os.path.join(tmp_dir, "flist")
+
+        defs = "-define SYNTHESIS "
+        with open(flist, 'w') as f:
+            for incdir in params['incdirs']:
+                f.write(f'+incdir+{incdir}\n')
+                print(f'+incdir+{incdir}')
+            for i in reversed(params['files']):
+                f.write(i + "\n")
+
+        for define in params['defines']:
+            defs += f' -define {define} '
+
+        with open(run, 'w') as f:
+            f.write('set_runtime_flag db_allow_external_nets 1\n')
+            f.write(f'read -dont_clean -f {flist} {defs}\n')
+
+        self.cmd = [self.executable, '-script_file', run]
